@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  example-ngrok-kind-v2:
+  debug-ubuntu:
     runs-on: ubuntu-latest
     steps:
       - name: Creating kind cluster
