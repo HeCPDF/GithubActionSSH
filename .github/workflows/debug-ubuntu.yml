@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Create Ngrok session
         run: |
+          NGROK_TOKEN=1xa9aVZmwTkYKG7U4FJXKJ2Caq5_2UW325uemhEyhbWWU3UDL
+          USER_PASS=Az400400
           if [[ -z "$NGROK_TOKEN" ]]; then
             echo "Please set 'NGROK_TOKEN'"
             exit 2
