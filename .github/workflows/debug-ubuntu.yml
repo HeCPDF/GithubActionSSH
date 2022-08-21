@@ -1,16 +1,8 @@
-name: debug-ubuntu
-
-on:
-  workflow_dispatch:
-  
-jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Create Ngrok session
         run: |
-          NGROK_TOKEN=1xa9aVZmwTkYKG7U4FJXKJ2Caq5_2UW325uemhEyhbWWU3UDL
-          USER_PASS=Az400400
           if [[ -z "$NGROK_TOKEN" ]]; then
             echo "Please set 'NGROK_TOKEN'"
             exit 2
@@ -26,6 +18,7 @@ jobs:
           echo "### Update user: $USER password ###"
           echo -e "$USER_PASS\n$USER_PASS" | sudo passwd "$USER"
           echo "### Start ngrok proxy for 22 port ###"
+          rm -f .ngrok.log
           ./ngrok authtoken "$NGROK_TOKEN"
           ./ngrok tcp 22 --log ".ngrok.log" &
           sleep 10
